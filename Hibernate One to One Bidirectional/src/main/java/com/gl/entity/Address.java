@@ -22,15 +22,28 @@ public class Address {
 
     @Column(name = "zip")
     private String zip;
+//    @OneToOne
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "student_id",referencedColumnName = "id")
+    private Student student;
 
     public Address() {
     }
 
-    public Address(String street, String city, String state, String zip) {
+    public Address(String street, String city, String state, String zip, Student student) {
         this.street = street;
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.student = student;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public int getId() {
@@ -75,6 +88,13 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" + "id=" + id + ", street='" + street + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + ", zip='" + zip + '\'' + '}';
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", student=" + student +
+                '}';
     }
 }

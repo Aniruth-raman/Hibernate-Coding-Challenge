@@ -18,6 +18,7 @@ public class Student {
     private String lastName;
     @Column(name = "email")
     private String email;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
@@ -34,7 +35,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\'' + ", address=" + address + '}';
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
     public int getId() {
